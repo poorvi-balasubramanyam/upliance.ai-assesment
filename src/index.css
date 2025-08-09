@@ -1,0 +1,411 @@
+/* Custom CSS Enhancements */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+/* Enhanced focus styles */
+*:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Animation classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Enhanced button hover effects */
+.MuiButton-root {
+  position: relative;
+  overflow: hidden;
+}
+
+.MuiButton-root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.MuiButton-root:hover::before {
+  left: 100%;
+}
+
+/* Enhanced card hover effects */
+.MuiCard-root {
+  position: relative;
+  overflow: hidden;
+}
+
+.MuiCard-root::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.MuiCard-root:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced text field focus */
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused {
+  transform: scale(1.01);
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #1e293b;
+}
+
+/* Enhanced loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .MuiContainer-root {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Mobile-specific optimizations */
+  .MuiButton-root {
+    min-height: 44px; /* Better touch targets */
+  }
+  
+  .MuiTextField-root {
+    margin-bottom: 16px;
+  }
+  
+  .MuiCard-root {
+    margin-bottom: 16px;
+  }
+  
+  /* Improve mobile navigation */
+  .MuiTabs-root {
+    min-height: 48px;
+  }
+  
+  .MuiTab-root {
+    min-height: 48px !important;
+    padding: 8px 12px !important;
+  }
+  
+  /* Better mobile form spacing */
+  .MuiGrid-container {
+    margin: 0 !important;
+  }
+  
+  .MuiGrid-item {
+    padding: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screen optimizations */
+  .MuiTypography-h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  .MuiTypography-h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .MuiTypography-h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  .MuiTypography-h4 {
+    font-size: 1.125rem !important;
+  }
+  
+  .MuiTypography-h5 {
+    font-size: 1rem !important;
+  }
+  
+  .MuiTypography-h6 {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Compact mobile buttons */
+  .MuiButton-root {
+    padding: 8px 16px !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Smaller mobile chips */
+  .MuiChip-root {
+    font-size: 0.75rem !important;
+    height: 24px !important;
+  }
+  
+  /* Compact mobile cards */
+  .MuiCardContent-root {
+    padding: 16px !important;
+  }
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+}
+
+/* Enhanced form field styling */
+.MuiFormControl-root {
+  margin-bottom: 16px;
+}
+
+.MuiFormControl-root .MuiOutlinedInput-root {
+  border-radius: 4px;
+}
+
+.MuiFormControl-root .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #6366f1;
+  border-width: 2px;
+}
+
+.MuiFormControl-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #6366f1;
+  border-width: 2px;
+}
+
+/* Enhanced chip styling */
+.MuiChip-root {
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Enhanced dialog styling */
+.MuiDialog-paper {
+  border-radius: 8px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Enhanced select styling */
+.MuiSelect-select {
+  border-radius: 4px;
+}
+
+/* Enhanced checkbox and radio styling */
+.MuiCheckbox-root,
+.MuiRadio-root {
+  border-radius: 2px;
+}
+
+/* Enhanced alert styling */
+.MuiAlert-root {
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Enhanced paper styling */
+.MuiPaper-root {
+  border-radius: 8px;
+}
+
+/* Enhanced spacing utilities */
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Enhanced typography */
+.text-gradient {
+  background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced shadows */
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-medium {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-large {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  .mobile-p-2 {
+    padding: 8px !important;
+  }
+  
+  .mobile-m-2 {
+    margin: 8px !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .MuiButton-root {
+    min-height: 48px;
+    padding: 12px 24px !important;
+  }
+  
+  .MuiIconButton-root {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  .MuiChip-root {
+    min-height: 32px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .MuiAppBar-root,
+  .MuiTabs-root,
+  .MuiButton-root {
+    display: none !important;
+  }
+  
+  .MuiContainer-root {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}
